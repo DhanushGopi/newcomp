@@ -4,37 +4,585 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow" />
-    
+    <title>Publication Hub — Button Strip Directory</title>
 
+    <!-- Google Fonts: Inter & Noto Sans Tamil -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <title>Button Strip</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        
-        * {
+        /* =========================================================
+           1. RESET & BASE FLUID TYPOGRAPHY
+           ========================================================= */
+        *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: "Noto Sans Tamil", sans-serif;
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', 'Noto Sans Tamil', sans-serif;
             background-color: #f8fafc;
+            color: #22262F;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* =========================================================
+           2. MAIN CONTAINER & FLUID GRID
+           ========================================================= */
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 16px;
+        }
+
+        @media (min-width: 640px) {
+            .main-wrapper {
+                padding: 32px;
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 920px;
+            margin: 0 auto;
+        }
+
+        .portal-view {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        @media (min-width: 640px) {
+            .portal-view {
+                gap: 32px;
+            }
+        }
+
+        /* Hero Header Section */
+        .hero-header {
+            text-align: center;
+            max-width: 560px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #10b981;
+            flex-shrink: 0;
+        }
+
+        .hero-title {
+            font-size: clamp(1.4rem, 4vw, 1.875rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            line-height: 1.25;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(0.85rem, 2.2vw, 0.975rem);
+            color: #475569;
+            line-height: 1.55;
+        }
+
+        /* Responsive Cards Grid (320px safe) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 18px;
+            width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .cards-grid {
+                gap: 24px;
+            }
+        }
+
+        /* =========================================================
+           3. PUBLICATION DESTINATION CARDS
+           ========================================================= */
+        .pub-card {
+            border-radius: 1rem;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 0;
+        }
+
+        @media (min-width: 640px) {
+            .pub-card {
+                padding: 28px;
+                gap: 24px;
+            }
+        }
+
+        .card-dinamani {
+            background: linear-gradient(135deg, #ffffff 0%, rgba(219, 234, 254, 0.35) 100%);
+        }
+        .card-dinamani:hover {
+            border-color: #3b82f6;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(219, 234, 254, 0.85) 100%);
+            transform: translateY(-2px);
+        }
+
+        .card-indulge {
+            background: linear-gradient(135deg, #ffffff 0%, rgba(254, 219, 219, 0.35) 100%);
+        }
+        .card-indulge:hover {
+            border-color: #f43f5e;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(254, 219, 219, 0.85) 100%);
+            transform: translateY(-2px);
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .card-header-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .brand-identity {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .brand-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 0.75rem;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.125rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
         }
 
+        .avatar-blue {
+            background-color: #2563eb;
+        }
+
+        .avatar-rose {
+            background-color: #e11d48;
+        }
+
+        .brand-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.25;
+        }
+
+        .brand-handle {
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-top: 2px;
+            word-break: break-word;
+        }
+
+        .handle-blue { color: #1d4ed8; }
+        .handle-rose { color: #be123c; }
+
+        .file-badge {
+            padding: 4px 10px;
+            border-radius: 0.375rem;
+            font-size: 0.7rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-weight: 500;
+            background-color: rgba(255, 255, 255, 0.9);
+            white-space: nowrap;
+        }
+
+        .badge-blue {
+            border: 1px solid #bfdbfe;
+            color: #1e40af;
+        }
+
+        .badge-rose {
+            border: 1px solid #fecdd3;
+            color: #9f1239;
+        }
+
+        .card-desc {
+            font-size: 0.875rem;
+            color: #475569;
+            line-height: 1.55;
+        }
+
+        .card-desc strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .tags-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding-top: 2px;
+        }
+
+        .tag-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 0.375rem;
+            font-size: 0.75rem;
+            background-color: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            color: #334155;
+        }
+
+        /* Card Action Buttons (Touch-Friendly >= 42px) */
+        .card-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-top: 4px;
+        }
+
+        .btn-primary-redirect {
+            flex: 1 1 175px;
+            min-height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 0.75rem;
+            background-color: #0f172a;
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-redirect-blue:hover { background-color: #1d4ed8; }
+        .btn-redirect-rose:hover { background-color: #be123c; }
+
+        .btn-secondary-preview {
+            flex: 0 1 auto;
+            min-height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 16px;
+            border-radius: 0.75rem;
+            background-color: #ffffff;
+            color: #1e293b;
+            border: 1px solid #cbd5e1;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-preview-blue:hover {
+            background-color: #eff6ff;
+            border-color: #60a5fa;
+        }
+
+        .btn-preview-rose:hover {
+            background-color: #fff1f2;
+            border-color: #fb7185;
+        }
+
+        /* Narrow Phone (< 380px): Stack action buttons cleanly full-width */
+        @media (max-width: 379px) {
+            .card-actions {
+                flex-direction: column;
+            }
+            .btn-primary-redirect,
+            .btn-secondary-preview {
+                width: 100%;
+                flex: none;
+            }
+        }
+
+        /* =========================================================
+           4. INTERACTIVE PREVIEW TOOLBAR & STAGE
+           ========================================================= */
+        .preview-view {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            width: 100%;
+        }
+
+        .preview-toolbar {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            border: 1px solid #e2e8f0;
+            padding: 16px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        @media (min-width: 640px) {
+            .preview-toolbar {
+                padding: 20px 24px;
+            }
+        }
+
+        .preview-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .preview-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 0.75rem;
+            color: #ffffff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .preview-title-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .preview-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .preview-filename {
+            padding: 2px 8px;
+            border-radius: 0.25rem;
+            font-size: 0.72rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            background-color: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+        }
+
+        .preview-subtitle {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 2px;
+            word-break: break-all;
+        }
+
+        .preview-controls {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @media (max-width: 540px) {
+            .preview-controls {
+                width: 100%;
+            }
+        }
+
+        .btn-toolbar {
+            min-height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 0.75rem;
+            font-family: inherit;
+            font-size: 0.78rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back {
+            background-color: #f1f5f9;
+            color: #334155;
+            border: 1px solid transparent;
+        }
+        .btn-back:hover {
+            background-color: #e2e8f0;
+        }
+
+        .switcher-group {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f1f5f9;
+            padding: 3px;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .tab-btn {
+            min-height: 30px;
+            padding: 4px 10px;
+            border-radius: 0.55rem;
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 0.76rem;
+            font-weight: 500;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .tab-btn:hover {
+            color: #0f172a;
+        }
+        .tab-active-blue {
+            background-color: #ffffff;
+            color: #1d4ed8;
+            font-weight: 600;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+        }
+        .tab-active-rose {
+            background-color: #ffffff;
+            color: #be123c;
+            font-weight: 600;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+        }
+        .tab-active-dark {
+            background-color: #ffffff;
+            color: #0f172a;
+            font-weight: 600;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-open-file {
+            background-color: #0f172a;
+            color: #ffffff;
+            border: 1px solid #0f172a;
+        }
+        .btn-open-file:hover {
+            background-color: #1e293b;
+        }
+
+        @media (max-width: 420px) {
+            .btn-open-file {
+                flex: 1 1 100%;
+            }
+        }
+
+        /* Live Canvas Area */
+        .canvas-stage {
+            border-radius: 1rem;
+            border: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+            min-height: 250px;
+            padding: 44px 14px 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+            transition: max-width 0.3s ease;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 640px) {
+            .canvas-stage {
+                padding: 48px 32px 36px;
+            }
+        }
+
+        /* Simulated Mobile Frame Mode inside Preview */
+        .canvas-stage.mobile-sim {
+            max-width: 375px;
+            border: 2px solid #cbd5e1;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+        }
+
+        .canvas-label {
+            position: absolute;
+            top: 12px;
+            left: 16px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+        }
+
+        /* =========================================================
+           5. EXACT BUTTON STRIP FIDELITY (dinamani.html & indulgeexpress.html)
+           ========================================================= */
         .button-strip {
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-wrap: wrap;
             gap: 1rem;
             width: 100%;
         }
@@ -55,15 +603,23 @@
             outline: none;
         }
 
-        .preferred-btn:hover {
+        /* Dinamani Blue Accent Hover */
+        .dinamani-theme .preferred-btn:hover {
             border-color: #22262F;
             background: linear-gradient(90deg, #ffffff 0%, rgba(219, 234, 254, 1) 100%);
         }
 
+        /* Indulge Express Rose Accent Hover */
+        .indulge-theme .preferred-btn:hover {
+            border-color: #2f2222;
+            background: linear-gradient(90deg, #ffffff 0%, rgb(254, 219, 219) 100%);
+        }
 
-        .preferred-btn2:hover {
+        /* Shared WhatsApp Green Accent Hover */
+        .dinamani-theme .preferred-btn2:hover,
+        .indulge-theme .preferred-btn2:hover {
             border-color: #22262F;
-            background: linear-gradient(90deg, #ffffff 0%, rgb(224, 255, 214)  100%);
+            background: linear-gradient(90deg, #ffffff 0%, rgb(224, 255, 214) 100%);
         }
 
         .icon-container {
@@ -103,131 +659,533 @@
             text-align: left;
         }
 
-
-
-        .preferred-btn a{
-            text-decoration: none;
+        .indulge-theme .btn-text {
+            color: #2f2222;
         }
 
-        /* Mobile Breakpoint Scaling (e.g., screens smaller than 480px) */
+        /* Exact Mobile Breakpoint Scaling from dinamani.html & indulgeexpress.html */
         @media (min-width: 400px) and (max-width: 768px) {
             .button-strip {
                 gap: 0.5rem;
             }
-
             .preferred-btn {
-                padding: 4px 8px; /* Reduced padding for compact layout */
+                padding: 4px 8px;
                 border-radius: 0.3rem;
             }
-
-            .icon-container, 
-            .icon-normal, 
+            .icon-container,
+            .icon-normal,
             .icon-hover {
                 width: 16px;
-                height: 16px; /* Scales down icon dimensions */
+                height: 16px;
             }
-
             .btn-text {
-                font-size: 0.6rem; /* Scales down text size */
+                font-size: 0.6rem;
             }
         }
 
-        @media (min-width: 320px) and (max-width: 400px) {
+        @media (max-width: 399px) {
             .button-strip {
                 gap: 0.3rem;
             }
-
             .preferred-btn {
-                padding: 4px; /* Reduced padding for compact layout */
+                padding: 4px;
                 border-radius: 0.3rem;
                 gap: 0.2rem;
             }
-
-            .icon-container, 
-            .icon-normal, 
+            .icon-container,
+            .icon-normal,
             .icon-hover {
                 width: 16px;
-                height: 16px; /* Scales down icon dimensions */
+                height: 16px;
             }
-
             .btn-text {
-                font-size: 0.5rem; /* Scales down text size */
+                font-size: 0.5rem;
             }
         }
 
-        
+        /* Simulated Mobile Viewport Override inside Desktop Preview */
+        .canvas-stage.mobile-sim .button-strip {
+            gap: 0.3rem;
+        }
+        .canvas-stage.mobile-sim .preferred-btn {
+            padding: 4px;
+            border-radius: 0.3rem;
+            gap: 0.2rem;
+        }
+        .canvas-stage.mobile-sim .icon-container,
+        .canvas-stage.mobile-sim .icon-normal,
+        .canvas-stage.mobile-sim .icon-hover {
+            width: 16px;
+            height: 16px;
+        }
+        .canvas-stage.mobile-sim .btn-text {
+            font-size: 0.5rem;
+        }
+
+        /* =========================================================
+           6. TOAST NOTIFICATION & FOOTER
+           ========================================================= */
+        .toast-banner {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            left: 16px;
+            margin-left: auto;
+            max-width: 340px;
+            z-index: 50;
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 12px 16px;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateY(120px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .toast-banner.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #60a5fa;
+            flex-shrink: 0;
+        }
+
+        .toast-title {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .toast-desc {
+            font-size: 0.72rem;
+            color: #cbd5e1;
+        }
+
+        .page-footer {
+            width: 100%;
+            padding: 18px 16px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            border-top: 1px solid rgba(226, 232, 240, 0.7);
+            line-height: 1.5;
+        }
+
+        .page-footer code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            color: #475569;
+        }
     </style>
 </head>
 <body>
 
-    <div class="button-strip">
-        
-        <a  href="https://www.google.com/preferences/source?q=https://www.dinamani.com/" target="_blank">
-        <button class="preferred-btn preferred-btn1" aria-label="Add as a preferred source on google">
-            <div class="icon-container">
-                <!-- Normal State Icon (Google G) -->
-                <svg class="icon-normal" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M23.52 12.27c0-.85-.07-1.7-.22-2.52H12v4.75h6.45c-.28 1.48-1.07 2.77-2.28 3.65v3.03h3.69c2.16-1.99 3.36-4.92 3.36-8.91z" fill="#4285F4"/>
-                    <path d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.69-3.03c-1.08.72-2.45 1.16-4.24 1.16-3.26 0-6.02-2.2-7-5.16H1.14v3.13C3.15 21.2 7.21 24 12 24z" fill="#34A853"/>
-                    <path d="M5 14.06c-.25-.72-.39-1.5-.39-2.06 0-.56.14-1.34.39-2.06V6.81H1.14C.41 8.27 0 9.9 0 12c0 2.1.41 3.73 1.14 5.19l3.86-3.13z" fill="#FBBC05"/>
-                    <path d="M12 4.75c1.76 0 3.35.61 4.6 1.81l3.45-3.45C17.95 1.19 15.24 0 12 0 7.21 0 3.15 2.8 1.14 6.81l3.86 3.13c.98-2.96 3.74-5.19 7-5.19z" fill="#EA4335"/>
-                </svg>
-                <!-- Hover State Icon (Dummy Cursor / Spark) -->
-                <svg class="icon-hover" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.59018 8.40045C6.24144 7.30288 7.24495 6.28364 8.32358 6.55865L8.42905 6.5899L19.0101 10.1143C20.2802 10.5375 20.3453 12.3094 19.1078 12.8233L14.7835 14.6182L12.6517 19.1671C12.1103 20.321 10.4667 20.2531 10.0013 19.1055L9.9603 18.9913L6.59018 8.40045ZM3.68979 9.42487C4.08075 9.03528 4.71393 9.0362 5.10385 9.42682C5.49377 9.81778 5.49269 10.4509 5.1019 10.8409L3.49936 12.4395C3.10829 12.829 2.47513 12.8284 2.0853 12.4376C1.69568 12.0466 1.69672 11.4135 2.08725 11.0235L3.68979 9.42487ZM0.0511169 5.15631C0.225309 4.63235 0.791789 4.34855 1.31577 4.52252L3.74936 5.33112C4.27338 5.50533 4.55726 6.07173 4.38315 6.59576C4.20892 7.11982 3.64256 7.40375 3.1185 7.22955L0.684906 6.41998C0.161255 6.24565 -0.122718 5.68011 0.0511169 5.15631ZM11.054 2.08014C11.445 1.69062 12.0782 1.69145 12.4681 2.08209C12.858 2.47303 12.8569 3.10612 12.4662 3.49615L10.8636 5.09479C10.4726 5.48434 9.83943 5.48365 9.44955 5.09283C9.05991 4.70189 9.0609 4.06872 9.45151 3.67877L11.054 2.08014ZM5.16635 0.0518188C5.68998 -0.123185 6.2567 0.15922 6.43198 0.682678L7.24252 3.10944C7.41756 3.63317 7.13533 4.19991 6.61166 4.37506C6.08808 4.54987 5.52123 4.26764 5.34604 3.7442L4.53549 1.31744C4.36062 0.793851 4.64291 0.227037 5.16635 0.0518188Z" fill="#22262F"/>
-                </svg>
+    <!-- Main Content Container (Headerless Design) -->
+    <main class="main-wrapper">
+        <div class="container">
 
+            <!-- PORTAL VIEW (Default Landing Hub) -->
+            <div id="view-portal" class="portal-view">
+                <!-- Hero Section -->
+                <div class="hero-header">
+                    <span class="status-pill">
+                        <span class="status-dot"></span>
+                        Social &amp; Preferred Source Hub
+                    </span>
+                    <h1 class="hero-title">
+                        Choose a Destination Page
+                    </h1>
+                    <p class="hero-subtitle">
+                        Redirect directly to the dedicated HTML page for each publication, or launch an instant interactive preview right here.
+                    </p>
+                </div>
+
+                <!-- Two Distinct Destination Cards -->
+                <div class="cards-grid">
+
+                    <!-- CARD 1: DINAMANI -->
+                    <article class="pub-card card-dinamani">
+                        <div class="card-body">
+                            <div class="card-header-row">
+                                <div class="brand-identity">
+                                    <div class="brand-avatar avatar-blue">
+                                        தி
+                                    </div>
+                                    <div>
+                                        <h2 class="brand-title">Dinamani</h2>
+                                        <p class="brand-handle handle-blue">dinamani.com &bull; @dinamanidaily</p>
+                                    </div>
+                                </div>
+                                <span class="file-badge badge-blue">
+                                    dinamani.html
+                                </span>
+                            </div>
+
+                            <p class="card-desc">
+                                Tamil daily news publication button strip featuring Google Preferred Source, Google Discover (<strong>@dinamanidaily</strong>), and official WhatsApp Channel links.
+                            </p>
+
+                            <div class="tags-row">
+                                <span class="tag-chip">Google Source</span>
+                                <span class="tag-chip">Google Discover</span>
+                                <span class="tag-chip">WhatsApp Channel</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons: Direct File Redirect + Instant Preview -->
+                        <div class="card-actions">
+                            <a href="dinamani.html" onclick="handleDirectRedirect(event, 'dinamani.html', 'Dinamani')"
+                               class="btn-primary-redirect btn-redirect-blue">
+                                <span>Open dinamani.html</span>
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+
+                            <button type="button" onclick="switchView('dinamani')"
+                                    class="btn-secondary-preview btn-preview-blue">
+                                <svg width="16" height="16" style="color:#2563eb;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <span>Preview</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- CARD 2: INDULGE EXPRESS -->
+                    <article class="pub-card card-indulge">
+                        <div class="card-body">
+                            <div class="card-header-row">
+                                <div class="brand-identity">
+                                    <div class="brand-avatar avatar-rose">
+                                        IE
+                                    </div>
+                                    <div>
+                                        <h2 class="brand-title">Indulge Express</h2>
+                                        <p class="brand-handle handle-rose">indulgexpress.com &bull; @indulgeexpress</p>
+                                    </div>
+                                </div>
+                                <span class="file-badge badge-rose">
+                                    indulgeexpress.html
+                                </span>
+                            </div>
+
+                            <p class="card-desc">
+                                Lifestyle &amp; luxury publication button strip featuring Google Preferred Source, Google Discover (<strong>@indulgeexpress</strong>), and official WhatsApp Channel links.
+                            </p>
+
+                            <div class="tags-row">
+                                <span class="tag-chip">Google Source</span>
+                                <span class="tag-chip">Google Discover</span>
+                                <span class="tag-chip">WhatsApp Channel</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons: Direct File Redirect + Instant Preview -->
+                        <div class="card-actions">
+                            <a href="indulgeexpress.html" onclick="handleDirectRedirect(event, 'indulgeexpress.html', 'Indulge Express')"
+                               class="btn-primary-redirect btn-redirect-rose">
+                                <span>Open indulgeexpress.html</span>
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+
+                            <button type="button" onclick="switchView('indulge')"
+                                    class="btn-secondary-preview btn-preview-rose">
+                                <svg width="16" height="16" style="color:#e11d48;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <span>Preview</span>
+                            </button>
+                        </div>
+                    </article>
+
+                </div>
             </div>
-            <span class="btn-text">
-                Add as a preferred<br>source on Google
-            </span>
-        </button>
-        </a>
 
-        <a  href="https://profile.google.com/@dinamanidaily" target="_blank">
-        <button class="preferred-btn preferred-btn3" aria-label="Add as a preferred source on google">
-            <div class="icon-container">
-                <!-- Normal State Icon (Google G) -->
-                <svg class="icon-normal" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.91518 2.86111L1.71482 4.07813L3.83213 6.1954L5.9661 8.32935H2.99854H0V9.9965V11.6636H2.99854H5.9661L7.16647 10.4633L8.3835 9.26295V7.57913V5.91199L6.24952 3.77804L4.13222 1.66077L2.91518 2.86111Z" fill="#FBBC01"/>
-                <path d="M8.77543 8.78034C8.59405 8.97027 8.27079 9.27489 8.20275 9.46674C8.1394 9.64536 8.32511 9.70739 8.32511 9.98068V10.7309L12.1111 14.5153L15.9138 18.3164L17.1146 17.1161L18.3322 15.899L16.214 13.7818L14.0792 11.6478H17.0479H20V9.98068V8.31354H14.6129H9.22575L8.77543 8.78034Z" fill="#4886F4"/>
-                <path d="M4.99112 12.5188L1.69012 15.8218L2.89049 17.0396L4.10752 18.2407L6.22483 16.1221L8.35881 13.9868V16.9562V19.9089H10.026H11.6931V16.9395V13.9868L10.026 12.3186C8.49218 10.8005 8.3957 10.6036 8.34568 9.93628L8.35378 9.15491L4.99112 12.5188Z" fill="#38A752"/>
-                <path d="M8.3453 4.61799L8.34277 9.24609L8.81211 8.78586C9.27512 8.33182 9.29559 8.33573 11.6796 8.33573H14.097L16.2143 6.21845L18.3483 4.08451L17.148 2.88416L15.9309 1.66715L13.8136 3.78442L11.6796 5.91837V2.95085V0H10.0125H8.3453L8.3453 4.61799Z" fill="#EB4435"/>
-                </svg>
+            <!-- DEDICATED PREVIEW VIEW (Simulates dinamani.html & indulgeexpress.html seamlessly) -->
+            <div id="view-preview" class="preview-view hidden">
+                <!-- Preview Toolbar -->
+                <div class="preview-toolbar">
+                    <div class="preview-meta">
+                        <div id="preview-badge" class="preview-badge avatar-blue">
+                            தி
+                        </div>
+                        <div>
+                            <div class="preview-title-row">
+                                <h2 id="preview-title" class="preview-title">Dinamani</h2>
+                                <span id="preview-filename" class="preview-filename">dinamani.html</span>
+                            </div>
+                            <p id="preview-subtitle" class="preview-subtitle">https://www.dinamani.com/ &bull; @dinamanidaily</p>
+                        </div>
+                    </div>
 
-                <!-- Hover State Icon (Dummy Cursor / Spark) -->
-                <svg class="icon-hover" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.59018 8.40045C6.24144 7.30288 7.24495 6.28364 8.32358 6.55865L8.42905 6.5899L19.0101 10.1143C20.2802 10.5375 20.3453 12.3094 19.1078 12.8233L14.7835 14.6182L12.6517 19.1671C12.1103 20.321 10.4667 20.2531 10.0013 19.1055L9.9603 18.9913L6.59018 8.40045ZM3.68979 9.42487C4.08075 9.03528 4.71393 9.0362 5.10385 9.42682C5.49377 9.81778 5.49269 10.4509 5.1019 10.8409L3.49936 12.4395C3.10829 12.829 2.47513 12.8284 2.0853 12.4376C1.69568 12.0466 1.69672 11.4135 2.08725 11.0235L3.68979 9.42487ZM0.0511169 5.15631C0.225309 4.63235 0.791789 4.34855 1.31577 4.52252L3.74936 5.33112C4.27338 5.50533 4.55726 6.07173 4.38315 6.59576C4.20892 7.11982 3.64256 7.40375 3.1185 7.22955L0.684906 6.41998C0.161255 6.24565 -0.122718 5.68011 0.0511169 5.15631ZM11.054 2.08014C11.445 1.69062 12.0782 1.69145 12.4681 2.08209C12.858 2.47303 12.8569 3.10612 12.4662 3.49615L10.8636 5.09479C10.4726 5.48434 9.83943 5.48365 9.44955 5.09283C9.05991 4.70189 9.0609 4.06872 9.45151 3.67877L11.054 2.08014ZM5.16635 0.0518188C5.68998 -0.123185 6.2567 0.15922 6.43198 0.682678L7.24252 3.10944C7.41756 3.63317 7.13533 4.19991 6.61166 4.37506C6.08808 4.54987 5.52123 4.26764 5.34604 3.7442L4.53549 1.31744C4.36062 0.793851 4.64291 0.227037 5.16635 0.0518188Z" fill="#22262F"/>
-                </svg>
+                    <!-- Switch between the two distinct pages, viewport size, or open standalone file -->
+                    <div class="preview-controls">
+                        <button type="button" onclick="switchView('portal')" id="btn-back-portal" class="btn-toolbar btn-back">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                            </svg>
+                            <span>All Pages</span>
+                        </button>
 
+                        <div class="switcher-group" role="tablist" aria-label="Publication Switcher">
+                            <button type="button" id="tab-dinamani" onclick="switchView('dinamani')" class="tab-btn">
+                                Dinamani
+                            </button>
+                            <button type="button" id="tab-indulge" onclick="switchView('indulge')" class="tab-btn">
+                                Indulge Express
+                            </button>
+                        </div>
+
+                        <div class="switcher-group" role="group" aria-label="Viewport Simulation">
+                            <button type="button" id="vp-desktop" onclick="setViewport('desktop')" class="tab-btn tab-active-dark" title="Full Responsive Width">
+                                Desktop
+                            </button>
+                            <button type="button" id="vp-mobile" onclick="setViewport('mobile')" class="tab-btn" title="375px Mobile Preview">
+                                Mobile
+                            </button>
+                        </div>
+
+                        <a id="preview-direct-link" href="dinamani.html"
+                           class="btn-toolbar btn-open-file">
+                            <span id="preview-direct-label">Open dinamani.html</span>
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Live Button Strip Canvas -->
+                <div id="canvas-stage" class="canvas-stage">
+                    <span id="canvas-label" class="canvas-label">
+                        Live Component Canvas
+                    </span>
+
+                    <!-- Dinamani Strip -->
+                    <div id="strip-dinamani" class="button-strip dinamani-theme">
+                        <a href="https://www.google.com/preferences/source?q=https://www.dinamani.com/" target="_blank" rel="noopener noreferrer" class="preferred-btn preferred-btn1" aria-label="Add as a preferred source on google">
+                            <div class="icon-container">
+                                <svg class="icon-normal" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M23.52 12.27c0-.85-.07-1.7-.22-2.52H12v4.75h6.45c-.28 1.48-1.07 2.77-2.28 3.65v3.03h3.69c2.16-1.99 3.36-4.92 3.36-8.91z" fill="#4285F4"/>
+                                    <path d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.69-3.03c-1.08.72-2.45 1.16-4.24 1.16-3.26 0-6.02-2.2-7-5.16H1.14v3.13C3.15 21.2 7.21 24 12 24z" fill="#34A853"/>
+                                    <path d="M5 14.06c-.25-.72-.39-1.5-.39-2.06 0-.56.14-1.34.39-2.06V6.81H1.14C.41 8.27 0 9.9 0 12c0 2.1.41 3.73 1.14 5.19l3.86-3.13z" fill="#FBBC05"/>
+                                    <path d="M12 4.75c1.76 0 3.35.61 4.6 1.81l3.45-3.45C17.95 1.19 15.24 0 12 0 7.21 0 3.15 2.8 1.14 6.81l3.86 3.13c.98-2.96 3.74-5.19 7-5.19z" fill="#EA4335"/>
+                                </svg>
+                                <svg class="icon-hover" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.59018 8.40045C6.24144 7.30288 7.24495 6.28364 8.32358 6.55865L8.42905 6.5899L19.0101 10.1143C20.2802 10.5375 20.3453 12.3094 19.1078 12.8233L14.7835 14.6182L12.6517 19.1671C12.1103 20.321 10.4667 20.2531 10.0013 19.1055L9.9603 18.9913L6.59018 8.40045ZM3.68979 9.42487C4.08075 9.03528 4.71393 9.0362 5.10385 9.42682C5.49377 9.81778 5.49269 10.4509 5.1019 10.8409L3.49936 12.4395C3.10829 12.829 2.47513 12.8284 2.0853 12.4376C1.69568 12.0466 1.69672 11.4135 2.08725 11.0235L3.68979 9.42487ZM0.0511169 5.15631C0.225309 4.63235 0.791789 4.34855 1.31577 4.52252L3.74936 5.33112C4.27338 5.50533 4.55726 6.07173 4.38315 6.59576C4.20892 7.11982 3.64256 7.40375 3.1185 7.22955L0.684906 6.41998C0.161255 6.24565 -0.122718 5.68011 0.0511169 5.15631ZM11.054 2.08014C11.445 1.69062 12.0782 1.69145 12.4681 2.08209C12.858 2.47303 12.8569 3.10612 12.4662 3.49615L10.8636 5.09479C10.4726 5.48434 9.83943 5.48365 9.44955 5.09283C9.05991 4.70189 9.0609 4.06872 9.45151 3.67877L11.054 2.08014ZM5.16635 0.0518188C5.68998 -0.123185 6.2567 0.15922 6.43198 0.682678L7.24252 3.10944C7.41756 3.63317 7.13533 4.19991 6.61166 4.37506C6.08808 4.54987 5.52123 4.26764 5.34604 3.7442L4.53549 1.31744C4.36062 0.793851 4.64291 0.227037 5.16635 0.0518188Z" fill="#22262F"/>
+                                </svg>
+                            </div>
+                            <span class="btn-text">Add as a preferred<br>source on Google</span>
+                        </a>
+
+                        <a href="https://profile.google.com/@dinamanidaily" target="_blank" rel="noopener noreferrer" class="preferred-btn preferred-btn3" aria-label="Follow us on Google Discover">
+                            <div class="icon-container">
+                                <svg class="icon-normal" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.91518 2.86111L1.71482 4.07813L3.83213 6.1954L5.9661 8.32935H2.99854H0V9.9965V11.6636H2.99854H5.9661L7.16647 10.4633L8.3835 9.26295V7.57913V5.91199L6.24952 3.77804L4.13222 1.66077L2.91518 2.86111Z" fill="#FBBC01"/>
+                                    <path d="M8.77543 8.78034C8.59405 8.97027 8.27079 9.27489 8.20275 9.46674C8.1394 9.64536 8.32511 9.70739 8.32511 9.98068V10.7309L12.1111 14.5153L15.9138 18.3164L17.1146 17.1161L18.3322 15.899L16.214 13.7818L14.0792 11.6478H17.0479H20V9.98068V8.31354H14.6129H9.22575L8.77543 8.78034Z" fill="#4886F4"/>
+                                    <path d="M4.99112 12.5188L1.69012 15.8218L2.89049 17.0396L4.10752 18.2407L6.22483 16.1221L8.35881 13.9868V16.9562V19.9089H10.026H11.6931V16.9395V13.9868L10.026 12.3186C8.49218 10.8005 8.3957 10.6036 8.34568 9.93628L8.35378 9.15491L4.99112 12.5188Z" fill="#38A752"/>
+                                    <path d="M8.3453 4.61799L8.34277 9.24609L8.81211 8.78586C9.27512 8.33182 9.29559 8.33573 11.6796 8.33573H14.097L16.2143 6.21845L18.3483 4.08451L17.148 2.88416L15.9309 1.66715L13.8136 3.78442L11.6796 5.91837V2.95085V0H10.0125H8.3453L8.3453 4.61799Z" fill="#EB4435"/>
+                                </svg>
+                                <svg class="icon-hover" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.59018 8.40045C6.24144 7.30288 7.24495 6.28364 8.32358 6.55865L8.42905 6.5899L19.0101 10.1143C20.2802 10.5375 20.3453 12.3094 19.1078 12.8233L14.7835 14.6182L12.6517 19.1671C12.1103 20.321 10.4667 20.2531 10.0013 19.1055L9.9603 18.9913L6.59018 8.40045ZM3.68979 9.42487C4.08075 9.03528 4.71393 9.0362 5.10385 9.42682C5.49377 9.81778 5.49269 10.4509 5.1019 10.8409L3.49936 12.4395C3.10829 12.829 2.47513 12.8284 2.0853 12.4376C1.69568 12.0466 1.69672 11.4135 2.08725 11.0235L3.68979 9.42487ZM0.0511169 5.15631C0.225309 4.63235 0.791789 4.34855 1.31577 4.52252L3.74936 5.33112C4.27338 5.50533 4.55726 6.07173 4.38315 6.59576C4.20892 7.11982 3.64256 7.40375 3.1185 7.22955L0.684906 6.41998C0.161255 6.24565 -0.122718 5.68011 0.0511169 5.15631ZM11.054 2.08014C11.445 1.69062 12.0782 1.69145 12.4681 2.08209C12.858 2.47303 12.8569 3.10612 12.4662 3.49615L10.8636 5.09479C10.4726 5.48434 9.83943 5.48365 9.44955 5.09283C9.05991 4.70189 9.0609 4.06872 9.45151 3.67877L11.054 2.08014ZM5.16635 0.0518188C5.68998 -0.123185 6.2567 0.15922 6.43198 0.682678L7.24252 3.10944C7.41756 3.63317 7.13533 4.19991 6.61166 4.37506C6.08808 4.54987 5.52123 4.26764 5.34604 3.7442L4.53549 1.31744C4.36062 0.793851 4.64291 0.227037 5.16635 0.0518188Z" fill="#22262F"/>
+                                </svg>
+                            </div>
+                            <span class="btn-text">Follow us on<br>Google Discover</span>
+                        </a>
+
+                        <a href="https://www.whatsapp.com/channel/0029Va60JxGFcowBIEtwvB0G" target="_blank" rel="noopener noreferrer" class="preferred-btn preferred-btn2" aria-label="Follow us on WhatsApp">
+                            <div class="icon-container">
+                                <svg class="icon-normal" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.0833559 9.95429C0.0828703 11.7085 0.541247 13.4214 1.41284 14.9312L0 20.0896L5.2791 18.7054C6.73924 19.5003 8.3752 19.9168 10.0377 19.9169H10.042C15.5302 19.9169 19.9977 15.4511 20 9.96214C20.0011 7.30233 18.9661 4.80121 17.0859 2.91951C15.2059 1.03796 12.7056 0.0012139 10.0416 0C4.55285 0 0.0857028 4.46553 0.0834369 9.95429" fill="#1FAF38"/>
+                                    <path d="M7.46521 5.64024C7.27211 5.21109 7.0689 5.20243 6.88528 5.1949C6.73491 5.18843 6.56302 5.18891 6.39129 5.18891C6.2194 5.18891 5.94012 5.25357 5.70405 5.51132C5.46774 5.76932 4.80186 6.39278 4.80186 7.66081C4.80186 8.92885 5.7255 10.1544 5.85425 10.3265C5.98317 10.4983 7.63734 13.1838 10.2571 14.2169C12.4344 15.0755 12.8775 14.9047 13.3501 14.8617C13.8227 14.8188 14.8751 14.2384 15.0898 13.6365C15.3046 13.0347 15.3046 12.5189 15.2402 12.4111C15.1758 12.3037 15.0039 12.2392 14.7461 12.1104C14.4884 11.9816 13.2211 11.3579 12.9849 11.2719C12.7486 11.186 12.5768 11.1431 12.4049 11.4012C12.233 11.6588 11.7394 12.2392 11.589 12.4111C11.4387 12.5834 11.2883 12.6049 11.0306 12.4759C10.7727 12.3466 9.94258 12.0748 8.95777 11.1968C8.19154 10.5136 7.67425 9.66998 7.52388 9.4119C7.37352 9.15423 7.50778 9.01455 7.63702 8.88612C7.75283 8.77064 7.89486 8.58516 8.02385 8.43471C8.15237 8.28419 8.19526 8.1768 8.28121 8.00491C8.36723 7.83286 8.32418 7.68234 8.25984 7.55342C8.19526 7.42451 7.6944 6.14983 7.46521 5.64024Z" fill="white"/>
+                                </svg>
+                                <svg class="icon-hover" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.59018 8.40045C6.24144 7.30288 7.24495 6.28364 8.32358 6.55865L8.42905 6.5899L19.0101 10.1143C20.2802 10.5375 20.3453 12.3094 19.1078 12.8233L14.7835 14.6182L12.6517 19.1671C12.1103 20.321 10.4667 20.2531 10.0013 19.1055L9.9603 18.9913L6.59018 8.40045ZM3.68979 9.42487C4.08075 9.03528 4.71393 9.0362 5.10385 9.42682C5.49377 9.81778 5.49269 10.4509 5.1019 10.8409L3.49936 12.4395C3.10829 12.829 2.47513 12.8284 2.0853 12.4376C1.69568 12.0466 1.69672 11.4135 2.08725 11.0235L3.68979 9.42487ZM0.0511169 5.15631C0.225309 4.63235 0.791789 4.34855 1.31577 4.52252L3.74936 5.33112C4.27338 5.50533 4.55726 6.07173 4.38315 6.59576C4.20892 7.11982 3.64256 7.40375 3.1185 7.22955L0.684906 6.41998C0.161255 6.24565 -0.122718 5.68011 0.0511169 5.15631ZM11.054 2.08014C11.445 1.69062 12.0782 1.69145 12.4681 2.08209C12.858 2.47303 12.8569 3.10612 12.4662 3.49615L10.8636 5.09479C10.4726 5.48434 9.83943 5.48365 9.44955 5.09283C9.05991 4.70189 9.0609 4.06872 9.45151 3.67877L11.054 2.08014ZM5.16635 0.0518188C5.68998 -0.123185 6.2567 0.15922 6.43198 0.682678L7.24252 3.10944C7.41756 3.63317 7.13533 4.19991 6.61166 4.37506C6.08808 4.54987 5.52123 4.26764 5.34604 3.7442L4.53549 1.31744C4.36062 0.793851 4.64291 0.227037 5.16635 0.0518188Z" fill="#22262F"/>
+                                </svg>
+                            </div>
+                            <span class="btn-text">Follow us on<br>WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <!-- Indulge Express Strip -->
+                    <div id="strip-indulge" class="hidden button-strip indulge-theme">
+                        <a href="https://www.google.com/preferences/source?q=https://www.indulgexpress.com/" target="_blank" rel="noopener noreferrer" class="preferred-btn preferred-btn1" aria-label="Add as a preferred source on google">
+                            <div class="icon-container">
+                                <svg class="icon-normal" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M23.52 12.27c0-.85-.07-1.7-.22-2.52H12v4.75h6.45c-.28 1.48-1.07 2.77-2.28 3.65v3.03h3.69c2.16-1.99 3.36-4.92 3.36-8.91z" fill="#4285F4"/>
+                                    <path d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.69-3.03c-1.08.72-2.45 1.16-4.24 1.16-3.26 0-6.02-2.2-7-5.16H1.14v3.13C3.15 21.2 7.21 24 12 24z" fill="#34A853"/>
+                                    <path d="M5 14.06c-.25-.72-.39-1.5-.39-2.06 0-.56.14-1.34.39-2.06V6.81H1.14C.41 8.27 0 9.9 0 12c0 2.1.41 3.73 1.14 5.19l3.86-3.13z" fill="#FBBC05"/>
+                                    <path d="M12 4.75c1.76 0 3.35.61 4.6 1.81l3.45-3.45C17.95 1.19 15.24 0 12 0 7.21 0 3.15 2.8 1.14 6.81l3.86 3.13c.98-2.96 3.74-5.19 7-5.19z" fill="#EA4335"/>
+                                </svg>
+                                <svg class="icon-hover" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.59018 8.40045C6.24144 7.30288 7.24495 6.28364 8.32358 6.55865L8.42905 6.5899L19.0101 10.1143C20.2802 10.5375 20.3453 12.3094 19.1078 12.8233L14.7835 14.6182L12.6517 19.1671C12.1103 20.321 10.4667 20.2531 10.0013 19.1055L9.9603 18.9913L6.59018 8.40045ZM3.68979 9.42487C4.08075 9.03528 4.71393 9.0362 5.10385 9.42682C5.49377 9.81778 5.49269 10.4509 5.1019 10.8409L3.49936 12.4395C3.10829 12.829 2.47513 12.8284 2.0853 12.4376C1.69568 12.0466 1.69672 11.4135 2.08725 11.0235L3.68979 9.42487ZM0.0511169 5.15631C0.225309 4.63235 0.791789 4.34855 1.31577 4.52252L3.74936 5.33112C4.27338 5.50533 4.55726 6.07173 4.38315 6.59576C4.20892 7.11982 3.64256 7.40375 3.1185 7.22955L0.684906 6.41998C0.161255 6.24565 -0.122718 5.68011 0.0511169 5.15631ZM11.054 2.08014C11.445 1.69062 12.0782 1.69145 12.4681 2.08209C12.858 2.47303 12.8569 3.10612 12.4662 3.49615L10.8636 5.09479C10.4726 5.48434 9.83943 5.48365 9.44955 5.09283C9.05991 4.70189 9.0609 4.06872 9.45151 3.67877L11.054 2.08014ZM5.16635 0.0518188C5.68998 -0.123185 6.2567 0.15922 6.43198 0.682678L7.24252 3.10944C7.41756 3.63317 7.13533 4.19991 6.61166 4.37506C6.08808 4.54987 5.52123 4.26764 5.34604 3.7442L4.53549 1.31744C4.36062 0.793851 4.64291 0.227037 5.16635 0.0518188Z" fill="#2f2222"/>
+                                </svg>
+                            </div>
+                            <span class="btn-text">Add as a preferred<br>source on Google</span>
+                        </a>
+
+                        <a href="https://profile.google.com/@indulgeexpress" target="_blank" rel="noopener noreferrer" class="preferred-btn preferred-btn3" aria-label="Follow us on Google Discover">
+                            <div class="icon-container">
+                                <svg class="icon-normal" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.91518 2.86111L1.71482 4.07813L3.83213 6.1954L5.9661 8.32935H2.99854H0V9.9965V11.6636H2.99854H5.9661L7.16647 10.4633L8.3835 9.26295V7.57913V5.91199L6.24952 3.77804L4.13222 1.66077L2.91518 2.86111Z" fill="#FBBC01"/>
+                                    <path d="M8.77543 8.78034C8.59405 8.97027 8.27079 9.27489 8.20275 9.46674C8.1394 9.64536 8.32511 9.70739 8.32511 9.98068V10.7309L12.1111 14.5153L15.9138 18.3164L17.1146 17.1161L18.3322 15.899L16.214 13.7818L14.0792 11.6478H17.0479H20V9.98068V8.31354H14.6129H9.22575L8.77543 8.78034Z" fill="#4886F4"/>
+                                    <path d="M4.99112 12.5188L1.69012 15.8218L2.89049 17.0396L4.10752 18.2407L6.22483 16.1221L8.35881 13.9868V16.9562V19.9089H10.026H11.6931V16.9395V13.9868L10.026 12.3186C8.49218 10.8005 8.3957 10.6036 8.34568 9.93628L8.35378 9.15491L4.99112 12.5188Z" fill="#38A752"/>
+                                    <path d="M8.3453 4.61799L8.34277 9.24609L8.81211 8.78586C9.27512 8.33182 9.29559 8.33573 11.6796 8.33573H14.097L16.2143 6.21845L18.3483 4.08451L17.148 2.88416L15.9309 1.66715L13.8136 3.78442L11.6796 5.91837V2.95085V0H10.0125H8.3453L8.3453 4.61799Z" fill="#EB4435"/>
+                                </svg>
+                                <svg class="icon-hover" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.59018 8.40045C6.24144 7.30288 7.24495 6.28364 8.32358 6.55865L8.42905 6.5899L19.0101 10.1143C20.2802 10.5375 20.3453 12.3094 19.1078 12.8233L14.7835 14.6182L12.6517 19.1671C12.1103 20.321 10.4667 20.2531 10.0013 19.1055L9.9603 18.9913L6.59018 8.40045ZM3.68979 9.42487C4.08075 9.03528 4.71393 9.0362 5.10385 9.42682C5.49377 9.81778 5.49269 10.4509 5.1019 10.8409L3.49936 12.4395C3.10829 12.829 2.47513 12.8284 2.0853 12.4376C1.69568 12.0466 1.69672 11.4135 2.08725 11.0235L3.68979 9.42487ZM0.0511169 5.15631C0.225309 4.63235 0.791789 4.34855 1.31577 4.52252L3.74936 5.33112C4.27338 5.50533 4.55726 6.07173 4.38315 6.59576C4.20892 7.11982 3.64256 7.40375 3.1185 7.22955L0.684906 6.41998C0.161255 6.24565 -0.122718 5.68011 0.0511169 5.15631ZM11.054 2.08014C11.445 1.69062 12.0782 1.69145 12.4681 2.08209C12.858 2.47303 12.8569 3.10612 12.4662 3.49615L10.8636 5.09479C10.4726 5.48434 9.83943 5.48365 9.44955 5.09283C9.05991 4.70189 9.0609 4.06872 9.45151 3.67877L11.054 2.08014ZM5.16635 0.0518188C5.68998 -0.123185 6.2567 0.15922 6.43198 0.682678L7.24252 3.10944C7.41756 3.63317 7.13533 4.19991 6.61166 4.37506C6.08808 4.54987 5.52123 4.26764 5.34604 3.7442L4.53549 1.31744C4.36062 0.793851 4.64291 0.227037 5.16635 0.0518188Z" fill="#2f2222"/>
+                                </svg>
+                            </div>
+                            <span class="btn-text">Follow us on<br>Google Discover</span>
+                        </a>
+
+                        <a href="https://www.whatsapp.com/channel/0029Vb677uz60eBXiDYheb0n" target="_blank" rel="noopener noreferrer" class="preferred-btn preferred-btn2" aria-label="Follow us on WhatsApp">
+                            <div class="icon-container">
+                                <svg class="icon-normal" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.0833559 9.95429C0.0828703 11.7085 0.541247 13.4214 1.41284 14.9312L0 20.0896L5.2791 18.7054C6.73924 19.5003 8.3752 19.9168 10.0377 19.9169H10.042C15.5302 19.9169 19.9977 15.4511 20 9.96214C20.0011 7.30233 18.9661 4.80121 17.0859 2.91951C15.2059 1.03796 12.7056 0.0012139 10.0416 0C4.55285 0 0.0857028 4.46553 0.0834369 9.95429" fill="#1FAF38"/>
+                                    <path d="M7.46521 5.64024C7.27211 5.21109 7.0689 5.20243 6.88528 5.1949C6.73491 5.18843 6.56302 5.18891 6.39129 5.18891C6.2194 5.18891 5.94012 5.25357 5.70405 5.51132C5.46774 5.76932 4.80186 6.39278 4.80186 7.66081C4.80186 8.92885 5.7255 10.1544 5.85425 10.3265C5.98317 10.4983 7.63734 13.1838 10.2571 14.2169C12.4344 15.0755 12.8775 14.9047 13.3501 14.8617C13.8227 14.8188 14.8751 14.2384 15.0898 13.6365C15.3046 13.0347 15.3046 12.5189 15.2402 12.4111C15.1758 12.3037 15.0039 12.2392 14.7461 12.1104C14.4884 11.9816 13.2211 11.3579 12.9849 11.2719C12.7486 11.186 12.5768 11.1431 12.4049 11.4012C12.233 11.6588 11.7394 12.2392 11.589 12.4111C11.4387 12.5834 11.2883 12.6049 11.0306 12.4759C10.7727 12.3466 9.94258 12.0748 8.95777 11.1968C8.19154 10.5136 7.67425 9.66998 7.52388 9.4119C7.37352 9.15423 7.50778 9.01455 7.63702 8.88612C7.75283 8.77064 7.89486 8.58516 8.02385 8.43471C8.15237 8.28419 8.19526 8.1768 8.28121 8.00491C8.36723 7.83286 8.32418 7.68234 8.25984 7.55342C8.19526 7.42451 7.6944 6.14983 7.46521 5.64024Z" fill="white"/>
+                                </svg>
+                                <svg class="icon-hover" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.59018 8.40045C6.24144 7.30288 7.24495 6.28364 8.32358 6.55865L8.42905 6.5899L19.0101 10.1143C20.2802 10.5375 20.3453 12.3094 19.1078 12.8233L14.7835 14.6182L12.6517 19.1671C12.1103 20.321 10.4667 20.2531 10.0013 19.1055L9.9603 18.9913L6.59018 8.40045ZM3.68979 9.42487C4.08075 9.03528 4.71393 9.0362 5.10385 9.42682C5.49377 9.81778 5.49269 10.4509 5.1019 10.8409L3.49936 12.4395C3.10829 12.829 2.47513 12.8284 2.0853 12.4376C1.69568 12.0466 1.69672 11.4135 2.08725 11.0235L3.68979 9.42487ZM0.0511169 5.15631C0.225309 4.63235 0.791789 4.34855 1.31577 4.52252L3.74936 5.33112C4.27338 5.50533 4.55726 6.07173 4.38315 6.59576C4.20892 7.11982 3.64256 7.40375 3.1185 7.22955L0.684906 6.41998C0.161255 6.24565 -0.122718 5.68011 0.0511169 5.15631ZM11.054 2.08014C11.445 1.69062 12.0782 1.69145 12.4681 2.08209C12.858 2.47303 12.8569 3.10612 12.4662 3.49615L10.8636 5.09479C10.4726 5.48434 9.83943 5.48365 9.44955 5.09283C9.05991 4.70189 9.0609 4.06872 9.45151 3.67877L11.054 2.08014ZM5.16635 0.0518188C5.68998 -0.123185 6.2567 0.15922 6.43198 0.682678L7.24252 3.10944C7.41756 3.63317 7.13533 4.19991 6.61166 4.37506C6.08808 4.54987 5.52123 4.26764 5.34604 3.7442L4.53549 1.31744C4.36062 0.793851 4.64291 0.227037 5.16635 0.0518188Z" fill="#22262F"/>
+                                </svg>
+                            </div>
+                            <span class="btn-text">Follow us on<br>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <span class="btn-text">
-                Follow us on<br>Google Discover
-            </span>
-        </button>
-        </a>
 
-        <a  href="https://www.whatsapp.com/channel/0029Va60JxGFcowBIEtwvB0G" target="_blank">
-        <button class="preferred-btn preferred-btn2" aria-label="Add as a preferred source on google">
-            <div class="icon-container">
-                <!-- Normal State Icon (Google G) -->
-                <svg class="icon-normal" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.0833559 9.95429C0.0828703 11.7085 0.541247 13.4214 1.41284 14.9312L0 20.0896L5.2791 18.7054C6.73924 19.5003 8.3752 19.9168 10.0377 19.9169H10.042C15.5302 19.9169 19.9977 15.4511 20 9.96214C20.0011 7.30233 18.9661 4.80121 17.0859 2.91951C15.2059 1.03796 12.7056 0.0012139 10.0416 0C4.55285 0 0.0857028 4.46553 0.0834369 9.95429" fill="#1FAF38"/>
-                <path d="M7.46521 5.64024C7.27211 5.21109 7.0689 5.20243 6.88528 5.1949C6.73491 5.18843 6.56302 5.18891 6.39129 5.18891C6.2194 5.18891 5.94012 5.25357 5.70405 5.51132C5.46774 5.76932 4.80186 6.39278 4.80186 7.66081C4.80186 8.92885 5.7255 10.1544 5.85425 10.3265C5.98317 10.4983 7.63734 13.1838 10.2571 14.2169C12.4344 15.0755 12.8775 14.9047 13.3501 14.8617C13.8227 14.8188 14.8751 14.2384 15.0898 13.6365C15.3046 13.0347 15.3046 12.5189 15.2402 12.4111C15.1758 12.3037 15.0039 12.2392 14.7461 12.1104C14.4884 11.9816 13.2211 11.3579 12.9849 11.2719C12.7486 11.186 12.5768 11.1431 12.4049 11.4012C12.233 11.6588 11.7394 12.2392 11.589 12.4111C11.4387 12.5834 11.2883 12.6049 11.0306 12.4759C10.7727 12.3466 9.94258 12.0748 8.95777 11.1968C8.19154 10.5136 7.67425 9.66998 7.52388 9.4119C7.37352 9.15423 7.50778 9.01455 7.63702 8.88612C7.75283 8.77064 7.89486 8.58516 8.02385 8.43471C8.15237 8.28419 8.19526 8.1768 8.28121 8.00491C8.36723 7.83286 8.32418 7.68234 8.25984 7.55342C8.19526 7.42451 7.6944 6.14983 7.46521 5.64024Z" fill="white"/>
-                </svg>
+        </div>
+    </main>
 
 
-                <!-- Hover State Icon (Dummy Cursor / Spark) -->
-                <svg class="icon-hover" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.59018 8.40045C6.24144 7.30288 7.24495 6.28364 8.32358 6.55865L8.42905 6.5899L19.0101 10.1143C20.2802 10.5375 20.3453 12.3094 19.1078 12.8233L14.7835 14.6182L12.6517 19.1671C12.1103 20.321 10.4667 20.2531 10.0013 19.1055L9.9603 18.9913L6.59018 8.40045ZM3.68979 9.42487C4.08075 9.03528 4.71393 9.0362 5.10385 9.42682C5.49377 9.81778 5.49269 10.4509 5.1019 10.8409L3.49936 12.4395C3.10829 12.829 2.47513 12.8284 2.0853 12.4376C1.69568 12.0466 1.69672 11.4135 2.08725 11.0235L3.68979 9.42487ZM0.0511169 5.15631C0.225309 4.63235 0.791789 4.34855 1.31577 4.52252L3.74936 5.33112C4.27338 5.50533 4.55726 6.07173 4.38315 6.59576C4.20892 7.11982 3.64256 7.40375 3.1185 7.22955L0.684906 6.41998C0.161255 6.24565 -0.122718 5.68011 0.0511169 5.15631ZM11.054 2.08014C11.445 1.69062 12.0782 1.69145 12.4681 2.08209C12.858 2.47303 12.8569 3.10612 12.4662 3.49615L10.8636 5.09479C10.4726 5.48434 9.83943 5.48365 9.44955 5.09283C9.05991 4.70189 9.0609 4.06872 9.45151 3.67877L11.054 2.08014ZM5.16635 0.0518188C5.68998 -0.123185 6.2567 0.15922 6.43198 0.682678L7.24252 3.10944C7.41756 3.63317 7.13533 4.19991 6.61166 4.37506C6.08808 4.54987 5.52123 4.26764 5.34604 3.7442L4.53549 1.31744C4.36062 0.793851 4.64291 0.227037 5.16635 0.0518188Z" fill="#22262F"/>
-                </svg>
 
-            </div>
-            <span class="btn-text">
-                Follow us on<br>WhatsApp
-            </span>
-        </button>
-        </a>
-     
+
+    <script>
+        /**
+         * Switches between the main Portal Hub view and the dedicated interactive previews
+         * for Dinamani or Indulge Express.
+         * @param {'portal' | 'dinamani' | 'indulge'} target
+         */
+        function switchView(target) {
+            const viewPortal = document.getElementById('view-portal');
+            const viewPreview = document.getElementById('view-preview');
+
+            const stripDinamani = document.getElementById('strip-dinamani');
+            const stripIndulge = document.getElementById('strip-indulge');
+
+            const tabDinamani = document.getElementById('tab-dinamani');
+            const tabIndulge = document.getElementById('tab-indulge');
+
+            const previewBadge = document.getElementById('preview-badge');
+            const previewTitle = document.getElementById('preview-title');
+            const previewFilename = document.getElementById('preview-filename');
+            const previewSubtitle = document.getElementById('preview-subtitle');
+            const previewDirectLink = document.getElementById('preview-direct-link');
+            const previewDirectLabel = document.getElementById('preview-direct-label');
+
+            if (target === 'portal') {
+                viewPortal.classList.remove('hidden');
+                viewPreview.classList.add('hidden');
+                window.history.replaceState(null, '', window.location.pathname);
+                return;
+            }
+
+            // Show preview container
+            viewPortal.classList.add('hidden');
+            viewPreview.classList.remove('hidden');
+
+            if (target === 'dinamani') {
+                stripDinamani.classList.remove('hidden');
+                stripIndulge.classList.add('hidden');
+
+                tabDinamani.className = 'tab-btn tab-active-blue';
+                tabIndulge.className = 'tab-btn';
+
+                previewBadge.textContent = 'தி';
+                previewBadge.className = 'preview-badge avatar-blue';
+                previewTitle.textContent = 'Dinamani';
+                previewFilename.textContent = 'dinamani.html';
+                previewSubtitle.textContent = 'https://www.dinamani.com/ • @dinamanidaily';
+                previewDirectLink.href = 'dinamani.html';
+                previewDirectLabel.textContent = 'Open dinamani.html';
+                window.history.replaceState(null, '', '#dinamani');
+            } else if (target === 'indulge') {
+                stripDinamani.classList.add('hidden');
+                stripIndulge.classList.remove('hidden');
+
+                tabIndulge.className = 'tab-btn tab-active-rose';
+                tabDinamani.className = 'tab-btn';
+
+                previewBadge.textContent = 'IE';
+                previewBadge.className = 'preview-badge avatar-rose';
+                previewTitle.textContent = 'Indulge Express';
+                previewFilename.textContent = 'indulgeexpress.html';
+                previewSubtitle.textContent = 'https://www.indulgexpress.com/ • @indulgeexpress';
+                previewDirectLink.href = 'indulgeexpress.html';
+                previewDirectLabel.textContent = 'Open indulgeexpress.html';
+                window.history.replaceState(null, '', '#indulge');
+            }
+        }
+
+        /**
+         * Toggles the live canvas stage between full responsive width and a simulated 375px mobile frame.
+         * @param {'desktop' | 'mobile'} mode
+         */
+        function setViewport(mode) {
+            const stage = document.getElementById('canvas-stage');
+            const label = document.getElementById('canvas-label');
+            const btnDesktop = document.getElementById('vp-desktop');
+            const btnMobile = document.getElementById('vp-mobile');
+
+            if (mode === 'mobile') {
+                stage.classList.add('mobile-sim');
+                label.textContent = 'Live Component Canvas (375px Mobile)';
+                btnMobile.className = 'tab-btn tab-active-dark';
+                btnDesktop.className = 'tab-btn';
+            } else {
+                stage.classList.remove('mobile-sim');
+                label.textContent = 'Live Component Canvas';
+                btnDesktop.className = 'tab-btn tab-active-dark';
+                btnMobile.className = 'tab-btn';
+            }
+        }
+
+        /**
+         * Provides smooth visual feedback when clicking a direct HTML file redirect link.
+         */
+        function handleDirectRedirect(event, filename, label) {
+            const toast = document.getElementById('redirect-toast');
+            const toastTitle = document.getElementById('toast-title');
+            const toastDesc = document.getElementById('toast-desc');
+
+            toastTitle.textContent = `Redirecting to ${label}...`;
+            toastDesc.textContent = `Opening ${filename}`;
+            toast.classList.add('show');
+        }
+
+        // Support direct URL hash routing (e.g., index.html#dinamani or index.html#indulge)
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash === 'dinamani' || hash === 'indulge') {
+                switchView(hash);
+            }
+        });
+    </script>
 </body>
 </html>
