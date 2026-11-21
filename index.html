@@ -62,7 +62,7 @@
 
         .container {
             width: 100%;
-            max-width: 920px;
+            max-width: 1080px;
             margin: 0 auto;
         }
 
@@ -81,7 +81,7 @@
         /* Hero Header Section */
         .hero-header {
             text-align: center;
-            max-width: 560px;
+            max-width: 580px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
@@ -128,7 +128,7 @@
         /* Responsive Cards Grid (320px safe) */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
             gap: 18px;
             width: 100%;
         }
@@ -180,6 +180,15 @@
             transform: translateY(-2px);
         }
 
+        .card-cinema {
+            background: linear-gradient(135deg, #ffffff 0%, rgba(254, 243, 199, 0.4) 100%);
+        }
+        .card-cinema:hover {
+            border-color: #f59e0b;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(254, 243, 199, 0.9) 100%);
+            transform: translateY(-2px);
+        }
+
         .card-body {
             display: flex;
             flex-direction: column;
@@ -223,6 +232,10 @@
             background-color: #e11d48;
         }
 
+        .avatar-amber {
+            background-color: #d97706;
+        }
+
         .brand-title {
             font-size: 1.125rem;
             font-weight: 700;
@@ -239,6 +252,7 @@
 
         .handle-blue { color: #1d4ed8; }
         .handle-rose { color: #be123c; }
+        .handle-amber { color: #b45309; }
 
         .file-badge {
             padding: 4px 10px;
@@ -258,6 +272,11 @@
         .badge-rose {
             border: 1px solid #fecdd3;
             color: #9f1239;
+        }
+
+        .badge-amber {
+            border: 1px solid #fde68a;
+            color: #92400e;
         }
 
         .card-desc {
@@ -316,6 +335,7 @@
 
         .btn-redirect-blue:hover { background-color: #1d4ed8; }
         .btn-redirect-rose:hover { background-color: #be123c; }
+        .btn-redirect-amber:hover { background-color: #b45309; }
 
         .btn-secondary-preview {
             flex: 0 1 auto;
@@ -344,6 +364,11 @@
         .btn-preview-rose:hover {
             background-color: #fff1f2;
             border-color: #fb7185;
+        }
+
+        .btn-preview-amber:hover {
+            background-color: #fffbeb;
+            border-color: #fbbf24;
         }
 
         /* Narrow Phone (< 380px): Stack action buttons cleanly full-width */
@@ -481,6 +506,7 @@
             padding: 3px;
             border-radius: 0.75rem;
             border: 1px solid rgba(226, 232, 240, 0.8);
+            flex-wrap: wrap;
         }
 
         .tab-btn {
@@ -508,6 +534,12 @@
         .tab-active-rose {
             background-color: #ffffff;
             color: #be123c;
+            font-weight: 600;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+        }
+        .tab-active-amber {
+            background-color: #ffffff;
+            color: #b45309;
             font-weight: 600;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
         }
@@ -576,7 +608,7 @@
         }
 
         /* =========================================================
-           5. EXACT BUTTON STRIP FIDELITY (dinamani.html & indulgeexpress.html)
+           5. EXACT BUTTON STRIP FIDELITY
            ========================================================= */
         .button-strip {
             display: flex;
@@ -609,8 +641,9 @@
             background: linear-gradient(90deg, #ffffff 0%, rgba(219, 234, 254, 1) 100%);
         }
 
-        /* Indulge Express Rose Accent Hover */
-        .indulge-theme .preferred-btn:hover {
+        /* Indulge Express & Cinema Express Rose/Warm Accent Hover */
+        .indulge-theme .preferred-btn:hover,
+        .cinema-theme .preferred-btn:hover {
             border-color: #2f2222;
             background: linear-gradient(90deg, #ffffff 0%, rgb(254, 219, 219) 100%);
         }
@@ -659,11 +692,12 @@
             text-align: left;
         }
 
-        .indulge-theme .btn-text {
+        .indulge-theme .btn-text,
+        .cinema-theme .btn-text {
             color: #2f2222;
         }
 
-        /* Exact Mobile Breakpoint Scaling from dinamani.html & indulgeexpress.html */
+        /* Exact Mobile Breakpoint Scaling */
         @media (min-width: 400px) and (max-width: 768px) {
             .button-strip {
                 gap: 0.5rem;
@@ -771,21 +805,6 @@
             font-size: 0.72rem;
             color: #cbd5e1;
         }
-
-        .page-footer {
-            width: 100%;
-            padding: 18px 16px;
-            text-align: center;
-            font-size: 0.75rem;
-            color: #94a3b8;
-            border-top: 1px solid rgba(226, 232, 240, 0.7);
-            line-height: 1.5;
-        }
-
-        .page-footer code {
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-            color: #475569;
-        }
     </style>
 </head>
 <body>
@@ -800,7 +819,7 @@
                 <div class="hero-header">
                     <span class="status-pill">
                         <span class="status-dot"></span>
-                        Social &amp; Preferred Source Hub
+                        Social & Preferred Source Hub
                     </span>
                     <h1 class="hero-title">
                         Choose a Destination Page
@@ -810,7 +829,7 @@
                     </p>
                 </div>
 
-                <!-- Two Distinct Destination Cards -->
+                <!-- Destination Cards Grid -->
                 <div class="cards-grid">
 
                     <!-- CARD 1: DINAMANI -->
@@ -823,7 +842,7 @@
                                     </div>
                                     <div>
                                         <h2 class="brand-title">Dinamani</h2>
-                                        <p class="brand-handle handle-blue">dinamani.com &bull; @dinamanidaily</p>
+                                        <p class="brand-handle handle-blue">dinamani.com • @dinamanidaily</p>
                                     </div>
                                 </div>
                                 <span class="file-badge badge-blue">
@@ -873,7 +892,7 @@
                                     </div>
                                     <div>
                                         <h2 class="brand-title">Indulge Express</h2>
-                                        <p class="brand-handle handle-rose">indulgexpress.com &bull; @indulgeexpress</p>
+                                        <p class="brand-handle handle-rose">indulgexpress.com • @indulgeexpress</p>
                                     </div>
                                 </div>
                                 <span class="file-badge badge-rose">
@@ -882,7 +901,7 @@
                             </div>
 
                             <p class="card-desc">
-                                Lifestyle &amp; luxury publication button strip featuring Google Preferred Source, Google Discover (<strong>@indulgeexpress</strong>), and official WhatsApp Channel links.
+                                Lifestyle & luxury publication button strip featuring Google Preferred Source, Google Discover (<strong>@indulgeexpress</strong>), and official WhatsApp Channel links.
                             </p>
 
                             <div class="tags-row">
@@ -913,10 +932,59 @@
                         </div>
                     </article>
 
+                    <!-- CARD 3: CINEMA EXPRESS -->
+                    <article class="pub-card card-cinema">
+                        <div class="card-body">
+                            <div class="card-header-row">
+                                <div class="brand-identity">
+                                    <div class="brand-avatar avatar-amber">
+                                        CE
+                                    </div>
+                                    <div>
+                                        <h2 class="brand-title">Cinema Express</h2>
+                                        <p class="brand-handle handle-amber">cinemaexpress.com • @cinemaexpresstnie</p>
+                                    </div>
+                                </div>
+                                <span class="file-badge badge-amber">
+                                    cinemaexpress.html
+                                </span>
+                            </div>
+
+                            <p class="card-desc">
+                                Cinema & entertainment publication button strip featuring Google Preferred Source and Google Discover (<strong>@cinemaexpresstnie</strong>) links.
+                            </p>
+
+                            <div class="tags-row">
+                                <span class="tag-chip">Google Source</span>
+                                <span class="tag-chip">Google Discover</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons: Direct File Redirect + Instant Preview -->
+                        <div class="card-actions">
+                            <a href="cinemaexpress.html" onclick="handleDirectRedirect(event, 'cinemaexpress.html', 'Cinema Express')"
+                               class="btn-primary-redirect btn-redirect-amber">
+                                <span>Open cinemaexpress.html</span>
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+
+                            <button type="button" onclick="switchView('cinema')"
+                                    class="btn-secondary-preview btn-preview-amber">
+                                <svg width="16" height="16" style="color:#d97706;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                <span>Preview</span>
+                            </button>
+                        </div>
+                    </article>
+
                 </div>
             </div>
 
-            <!-- DEDICATED PREVIEW VIEW (Simulates dinamani.html & indulgeexpress.html seamlessly) -->
+            <!-- DEDICATED PREVIEW VIEW -->
             <div id="view-preview" class="preview-view hidden">
                 <!-- Preview Toolbar -->
                 <div class="preview-toolbar">
@@ -929,11 +997,11 @@
                                 <h2 id="preview-title" class="preview-title">Dinamani</h2>
                                 <span id="preview-filename" class="preview-filename">dinamani.html</span>
                             </div>
-                            <p id="preview-subtitle" class="preview-subtitle">https://www.dinamani.com/ &bull; @dinamanidaily</p>
+                            <p id="preview-subtitle" class="preview-subtitle">https://www.dinamani.com/ • @dinamanidaily</p>
                         </div>
                     </div>
 
-                    <!-- Switch between the two distinct pages, viewport size, or open standalone file -->
+                    <!-- Switch between the publication pages, viewport size, or open standalone file -->
                     <div class="preview-controls">
                         <button type="button" onclick="switchView('portal')" id="btn-back-portal" class="btn-toolbar btn-back">
                             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -948,6 +1016,9 @@
                             </button>
                             <button type="button" id="tab-indulge" onclick="switchView('indulge')" class="tab-btn">
                                 Indulge Express
+                            </button>
+                            <button type="button" id="tab-cinema" onclick="switchView('cinema')" class="tab-btn">
+                                Cinema Express
                             </button>
                         </div>
 
@@ -1067,20 +1138,58 @@
                             <span class="btn-text">Follow us on<br>WhatsApp</span>
                         </a>
                     </div>
+
+                    <!-- Cinema Express Strip -->
+                    <div id="strip-cinema" class="hidden button-strip cinema-theme">
+                        <a href="https://www.google.com/preferences/source?q=https://www.cinemaexpress.com/" target="_blank" rel="noopener noreferrer" class="preferred-btn preferred-btn1" aria-label="Add as a preferred source on google">
+                            <div class="icon-container">
+                                <svg class="icon-normal" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M23.52 12.27c0-.85-.07-1.7-.22-2.52H12v4.75h6.45c-.28 1.48-1.07 2.77-2.28 3.65v3.03h3.69c2.16-1.99 3.36-4.92 3.36-8.91z" fill="#4285F4"/>
+                                    <path d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.69-3.03c-1.08.72-2.45 1.16-4.24 1.16-3.26 0-6.02-2.2-7-5.16H1.14v3.13C3.15 21.2 7.21 24 12 24z" fill="#34A853"/>
+                                    <path d="M5 14.06c-.25-.72-.39-1.5-.39-2.06 0-.56.14-1.34.39-2.06V6.81H1.14C.41 8.27 0 9.9 0 12c0 2.1.41 3.73 1.14 5.19l3.86-3.13z" fill="#FBBC05"/>
+                                    <path d="M12 4.75c1.76 0 3.35.61 4.6 1.81l3.45-3.45C17.95 1.19 15.24 0 12 0 7.21 0 3.15 2.8 1.14 6.81l3.86 3.13c.98-2.96 3.74-5.19 7-5.19z" fill="#EA4335"/>
+                                </svg>
+                                <svg class="icon-hover" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.59018 8.40045C6.24144 7.30288 7.24495 6.28364 8.32358 6.55865L8.42905 6.5899L19.0101 10.1143C20.2802 10.5375 20.3453 12.3094 19.1078 12.8233L14.7835 14.6182L12.6517 19.1671C12.1103 20.321 10.4667 20.2531 10.0013 19.1055L9.9603 18.9913L6.59018 8.40045ZM3.68979 9.42487C4.08075 9.03528 4.71393 9.0362 5.10385 9.42682C5.49377 9.81778 5.49269 10.4509 5.1019 10.8409L3.49936 12.4395C3.10829 12.829 2.47513 12.8284 2.0853 12.4376C1.69568 12.0466 1.69672 11.4135 2.08725 11.0235L3.68979 9.42487ZM0.0511169 5.15631C0.225309 4.63235 0.791789 4.34855 1.31577 4.52252L3.74936 5.33112C4.27338 5.50533 4.55726 6.07173 4.38315 6.59576C4.20892 7.11982 3.64256 7.40375 3.1185 7.22955L0.684906 6.41998C0.161255 6.24565 -0.122718 5.68011 0.0511169 5.15631ZM11.054 2.08014C11.445 1.69062 12.0782 1.69145 12.4681 2.08209C12.858 2.47303 12.8569 3.10612 12.4662 3.49615L10.8636 5.09479C10.4726 5.48434 9.83943 5.48365 9.44955 5.09283C9.05991 4.70189 9.0609 4.06872 9.45151 3.67877L11.054 2.08014ZM5.16635 0.0518188C5.68998 -0.123185 6.2567 0.15922 6.43198 0.682678L7.24252 3.10944C7.41756 3.63317 7.13533 4.19991 6.61166 4.37506C6.08808 4.54987 5.52123 4.26764 5.34604 3.7442L4.53549 1.31744C4.36062 0.793851 4.64291 0.227037 5.16635 0.0518188Z" fill="#2f2222"/>
+                                </svg>
+                            </div>
+                            <span class="btn-text">Add as a preferred<br>source on Google</span>
+                        </a>
+
+                        <a href="https://profile.google.com/@cinemaexpresstnie" target="_blank" rel="noopener noreferrer" class="preferred-btn preferred-btn3" aria-label="Follow us on Google Discover">
+                            <div class="icon-container">
+                                <svg class="icon-normal" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2.91518 2.86111L1.71482 4.07813L3.83213 6.1954L5.9661 8.32935H2.99854H0V9.9965V11.6636H2.99854H5.9661L7.16647 10.4633L8.3835 9.26295V7.57913V5.91199L6.24952 3.77804L4.13222 1.66077L2.91518 2.86111Z" fill="#FBBC01"/>
+                                    <path d="M8.77543 8.78034C8.59405 8.97027 8.27079 9.27489 8.20275 9.46674C8.1394 9.64536 8.32511 9.70739 8.32511 9.98068V10.7309L12.1111 14.5153L15.9138 18.3164L17.1146 17.1161L18.3322 15.899L16.214 13.7818L14.0792 11.6478H17.0479H20V9.98068V8.31354H14.6129H9.22575L8.77543 8.78034Z" fill="#4886F4"/>
+                                    <path d="M4.99112 12.5188L1.69012 15.8218L2.89049 17.0396L4.10752 18.2407L6.22483 16.1221L8.35881 13.9868V16.9562V19.9089H10.026H11.6931V16.9395V13.9868L10.026 12.3186C8.49218 10.8005 8.3957 10.6036 8.34568 9.93628L8.35378 9.15491L4.99112 12.5188Z" fill="#38A752"/>
+                                    <path d="M8.3453 4.61799L8.34277 9.24609L8.81211 8.78586C9.27512 8.33182 9.29559 8.33573 11.6796 8.33573H14.097L16.2143 6.21845L18.3483 4.08451L17.148 2.88416L15.9309 1.66715L13.8136 3.78442L11.6796 5.91837V2.95085V0H10.0125H8.3453L8.3453 4.61799Z" fill="#EB4435"/>
+                                </svg>
+                                <svg class="icon-hover" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.59018 8.40045C6.24144 7.30288 7.24495 6.28364 8.32358 6.55865L8.42905 6.5899L19.0101 10.1143C20.2802 10.5375 20.3453 12.3094 19.1078 12.8233L14.7835 14.6182L12.6517 19.1671C12.1103 20.321 10.4667 20.2531 10.0013 19.1055L9.9603 18.9913L6.59018 8.40045ZM3.68979 9.42487C4.08075 9.03528 4.71393 9.0362 5.10385 9.42682C5.49377 9.81778 5.49269 10.4509 5.1019 10.8409L3.49936 12.4395C3.10829 12.829 2.47513 12.8284 2.0853 12.4376C1.69568 12.0466 1.69672 11.4135 2.08725 11.0235L3.68979 9.42487ZM0.0511169 5.15631C0.225309 4.63235 0.791789 4.34855 1.31577 4.52252L3.74936 5.33112C4.27338 5.50533 4.55726 6.07173 4.38315 6.59576C4.20892 7.11982 3.64256 7.40375 3.1185 7.22955L0.684906 6.41998C0.161255 6.24565 -0.122718 5.68011 0.0511169 5.15631ZM11.054 2.08014C11.445 1.69062 12.0782 1.69145 12.4681 2.08209C12.858 2.47303 12.8569 3.10612 12.4662 3.49615L10.8636 5.09479C10.4726 5.48434 9.83943 5.48365 9.44955 5.09283C9.05991 4.70189 9.0609 4.06872 9.45151 3.67877L11.054 2.08014ZM5.16635 0.0518188C5.68998 -0.123185 6.2567 0.15922 6.43198 0.682678L7.24252 3.10944C7.41756 3.63317 7.13533 4.19991 6.61166 4.37506C6.08808 4.54987 5.52123 4.26764 5.34604 3.7442L4.53549 1.31744C4.36062 0.793851 4.64291 0.227037 5.16635 0.0518188Z" fill="#2f2222"/>
+                                </svg>
+                            </div>
+                            <span class="btn-text">Follow us on<br>Google Discover</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
         </div>
     </main>
 
-
-
+    <div id="redirect-toast" class="toast-banner" role="status" aria-live="polite">
+        <span class="toast-dot"></span>
+        <div>
+            <div id="toast-title" class="toast-title"></div>
+            <div id="toast-desc" class="toast-desc"></div>
+        </div>
+    </div>
 
     <script>
         /**
          * Switches between the main Portal Hub view and the dedicated interactive previews
-         * for Dinamani or Indulge Express.
-         * @param {'portal' | 'dinamani' | 'indulge'} target
+         * for Dinamani, Indulge Express, or Cinema Express.
+         * @param {'portal' | 'dinamani' | 'indulge' | 'cinema'} target
          */
         function switchView(target) {
             const viewPortal = document.getElementById('view-portal');
@@ -1088,9 +1197,11 @@
 
             const stripDinamani = document.getElementById('strip-dinamani');
             const stripIndulge = document.getElementById('strip-indulge');
+            const stripCinema = document.getElementById('strip-cinema');
 
             const tabDinamani = document.getElementById('tab-dinamani');
             const tabIndulge = document.getElementById('tab-indulge');
+            const tabCinema = document.getElementById('tab-cinema');
 
             const previewBadge = document.getElementById('preview-badge');
             const previewTitle = document.getElementById('preview-title');
@@ -1110,12 +1221,17 @@
             viewPortal.classList.add('hidden');
             viewPreview.classList.remove('hidden');
 
+            stripDinamani.classList.add('hidden');
+            stripIndulge.classList.add('hidden');
+            stripCinema.classList.add('hidden');
+
+            tabDinamani.className = 'tab-btn';
+            tabIndulge.className = 'tab-btn';
+            tabCinema.className = 'tab-btn';
+
             if (target === 'dinamani') {
                 stripDinamani.classList.remove('hidden');
-                stripIndulge.classList.add('hidden');
-
                 tabDinamani.className = 'tab-btn tab-active-blue';
-                tabIndulge.className = 'tab-btn';
 
                 previewBadge.textContent = 'தி';
                 previewBadge.className = 'preview-badge avatar-blue';
@@ -1126,11 +1242,8 @@
                 previewDirectLabel.textContent = 'Open dinamani.html';
                 window.history.replaceState(null, '', '#dinamani');
             } else if (target === 'indulge') {
-                stripDinamani.classList.add('hidden');
                 stripIndulge.classList.remove('hidden');
-
                 tabIndulge.className = 'tab-btn tab-active-rose';
-                tabDinamani.className = 'tab-btn';
 
                 previewBadge.textContent = 'IE';
                 previewBadge.className = 'preview-badge avatar-rose';
@@ -1140,6 +1253,18 @@
                 previewDirectLink.href = 'indulgeexpress.html';
                 previewDirectLabel.textContent = 'Open indulgeexpress.html';
                 window.history.replaceState(null, '', '#indulge');
+            } else if (target === 'cinema') {
+                stripCinema.classList.remove('hidden');
+                tabCinema.className = 'tab-btn tab-active-amber';
+
+                previewBadge.textContent = 'CE';
+                previewBadge.className = 'preview-badge avatar-amber';
+                previewTitle.textContent = 'Cinema Express';
+                previewFilename.textContent = 'cinemaexpress.html';
+                previewSubtitle.textContent = 'https://www.cinemaexpress.com/ • @cinemaexpresstnie';
+                previewDirectLink.href = 'cinemaexpress.html';
+                previewDirectLabel.textContent = 'Open cinemaexpress.html';
+                window.history.replaceState(null, '', '#cinema');
             }
         }
 
@@ -1179,10 +1304,10 @@
             toast.classList.add('show');
         }
 
-        // Support direct URL hash routing (e.g., index.html#dinamani or index.html#indulge)
+        // Support direct URL hash routing (e.g., index.html#dinamani, #indulge, or #cinema)
         window.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.replace('#', '');
-            if (hash === 'dinamani' || hash === 'indulge') {
+            if (hash === 'dinamani' || hash === 'indulge' || hash === 'cinema') {
                 switchView(hash);
             }
         });
